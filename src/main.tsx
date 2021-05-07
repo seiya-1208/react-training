@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-
 import { TopPage } from "./pages/top"
 import { UserIndexPage } from "./pages/users"
 import { UserShowPage } from "./pages/users/show"
