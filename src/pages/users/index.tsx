@@ -13,6 +13,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 export const UserIndexPage: FC = () => {
   const params = useParams<{ userId: string }>()
@@ -20,6 +22,12 @@ export const UserIndexPage: FC = () => {
   const rows = [
     { name: '名前', age: '年齢', fat: '体重' }
   ]
+
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
+    setChecked(event.target.checked);
+  };
 
   return (
     <React.Fragment>
@@ -100,6 +108,37 @@ export const UserIndexPage: FC = () => {
           Link
       </Button>
       </div>
+
+      <div>
+        <Checkbox
+          checked={checked}
+          onChange={handleChange}
+          inputProps={{ 'aria-label': 'primary checkbox' }}
+        />
+        <Checkbox
+          defaultChecked
+          color="primary"
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
+        <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+        <Checkbox disabled inputProps={{ 'aria-label': 'disabled checkbox' }} />
+        <Checkbox disabled checked inputProps={{ 'aria-label': 'disabled checked checkbox' }} />
+        <Checkbox
+          defaultChecked
+          indeterminate
+          inputProps={{ 'aria-label': 'indeterminate checkbox' }}
+        />
+        <Checkbox
+          defaultChecked
+          color="default"
+          inputProps={{ 'aria-label': 'checkbox with default color' }}
+        />
+        <Checkbox
+          defaultChecked
+          size="small"
+          inputProps={{ 'aria-label': 'checkbox with small size' }}
+        />
+      </div>
     </React.Fragment>
   )
 }
@@ -115,3 +154,4 @@ const useStyles = makeStyles((theme) => ({
 export default function ContainedButtons() {
   const classes = useStyles();
 }
+
